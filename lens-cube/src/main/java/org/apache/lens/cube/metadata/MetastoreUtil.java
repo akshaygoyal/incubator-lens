@@ -416,9 +416,11 @@ public class MetastoreUtil {
     if (props.containsKey(key + ".size")) {
       int size = Integer.parseInt(props.get(key + ".size"));
       StringBuilder valueStr = new StringBuilder();
-      for (int i = 0; i < size; i++) {
+      for (int i = 0; i < size - 1; i++) {
         valueStr.append(props.get(key + i));
+        valueStr.append(",");
       }
+      valueStr.append(props.get(key + (size-1)));
       return valueStr.toString();
     } else if (props.containsKey(key)) {
       return props.get(key);
